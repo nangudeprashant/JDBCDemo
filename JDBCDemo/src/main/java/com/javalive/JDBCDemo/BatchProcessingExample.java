@@ -58,10 +58,6 @@ public class BatchProcessingExample {
 
 			// Again, let us select all the records and display them.
 			printRows(stmt);
-
-			// Clean-up environment
-			stmt.close();
-			conn.close();
 		} catch (SQLException se) {
 			// Handle errors for JDBC
 			se.printStackTrace();
