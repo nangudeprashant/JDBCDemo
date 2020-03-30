@@ -11,6 +11,7 @@ public class CompleteExampleOldWay {
 	public static void main(String[] args) {
 		Connection conn = null;
 		Statement stmt = null;
+		ResultSet rs=null;
 		try {
 			// STEP 2: Register JDBC driver
 			Class.forName("com.mysql.jdbc.Driver");// This is old type code snippet to get the connection.
@@ -25,7 +26,7 @@ public class CompleteExampleOldWay {
 		      stmt = conn.createStatement();
 		      String sql;
 		      sql = "SELECT empid, ename FROM Employee";
-		      ResultSet rs = stmt.executeQuery(sql);
+		      rs = stmt.executeQuery(sql);
 
 		      //STEP 5: Extract data from result set
 		      while(rs.next()){
@@ -37,9 +38,6 @@ public class CompleteExampleOldWay {
 		         System.out.print("ID: " + id);
 		         System.out.println(", Name: " + ename);
 		         }
-		      rs.close();
-		      stmt.close();
-		      conn.close();
 		} catch (SQLException se) {
 			// Handle errors for JDBC
 			se.printStackTrace();
@@ -48,6 +46,11 @@ public class CompleteExampleOldWay {
 			e.printStackTrace();
 		} finally {
 			// finally block used to close resources
+			try {
+				if (rs != null)
+					rs.close();
+			} catch (SQLException se2) {
+			}
 			try {
 				if (stmt != null)
 					stmt.close();

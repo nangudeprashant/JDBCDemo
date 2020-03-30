@@ -30,8 +30,6 @@ public class CompleteExampleNewWay {
 		         System.out.println(", Name: " + ename);
 		         }
 		      rs.close();
-		      stmt.close();
-		      conn.close();
 		} catch (SQLException se) {
 			// Handle errors for JDBC
 			se.printStackTrace();
