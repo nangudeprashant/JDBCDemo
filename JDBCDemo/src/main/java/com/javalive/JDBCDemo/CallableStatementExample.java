@@ -24,7 +24,7 @@ public class CallableStatementExample {
 			stmt = conn.prepareCall(sql);
 
 			// Bind IN parameter first, then bind OUT parameter
-			int emp_ID = 102;
+			int emp_ID = 2;
 			stmt.setInt(1, emp_ID);
 			// This would set ID as 102
 			// Because second parameter is OUT so register it
