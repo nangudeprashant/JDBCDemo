@@ -38,13 +38,15 @@ public class TransacionAndSavepointExample {
 			// STEP 7: delete rows having ID grater than 104
 			// But save point before doing so.
 			Savepoint savepoint1 = conn.setSavepoint("ROWS_DELETED_1");
-			System.out.println("Deleting row....");
+			System.out.println("Deleting row WHERE ID = 101....");
 			String SQL = "DELETE FROM Employees " + "WHERE ID = 110";
 			stmt.executeUpdate(SQL);
-			// oops... we deleted too wrong employees!
+			// oops... we deleted wrong employees!
 			// STEP 8: Rollback the changes afetr save point 2.
+			System.out.println("Wehave deleted wrong data.Let's rollback it.");
 			conn.rollback(savepoint1);
-
+			System.out.println("Data after rollback.....");
+			printRs(rs);
 			// STEP 9: delete rows having ID grater than 104
 			// But save point before doing so.
 			Savepoint savepoint2 = conn.setSavepoint("ROWS_DELETED_2");
