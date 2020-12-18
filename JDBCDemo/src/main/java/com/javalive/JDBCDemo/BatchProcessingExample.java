@@ -33,7 +33,6 @@ public class BatchProcessingExample {
 
 			// First, let us select all the records and display them.
 			printRows(stmt);
-
 			// Set the variables
 			stmt.setInt(1, 400);
 			stmt.setString(2, "Pappu");
@@ -83,7 +82,7 @@ public class BatchProcessingExample {
 	
 	
 	public static void printRows(Statement stmt) throws SQLException{
-		   System.out.println("Displaying available rows...");
+		   //System.out.println("Displaying available rows...");
 		   // Let us select all the records and display them.
 		   String sql = "SELECT id, first, last, age FROM Employees";
 		   ResultSet rs = stmt.executeQuery(sql);
