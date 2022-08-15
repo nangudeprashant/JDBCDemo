@@ -3,6 +3,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
+
 public class MySQLDbUtil {
 	private  static String databaseURL = "jdbc:mysql://localhost:3306/test";
     private static Connection conn = null;

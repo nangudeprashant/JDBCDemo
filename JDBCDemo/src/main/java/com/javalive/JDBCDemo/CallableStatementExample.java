@@ -5,7 +5,18 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 import com.javalive.dbconnectionutility.MySQLDbUtil;
-
+/*
+The CallableStatement interface provides methods to execute the stored procedures. 
+Since the JDBC API provides a stored procedure SQL escape syntax, you can call stored procedures of all RDBMS 
+in single standard way.
+Creating a CallableStatement
+You can create an object of the CallableStatement (interface) using the prepareCall() method of the 
+Connection interface. This method accepts a string variable representing a query to call the stored 
+procedure and returns a CallableStatement object.
+A CallableStatement can have input parameters, output parameters or both. To pass input parameters to 
+the procedure call you can use place holder and set values to these using the setter methods (setInt(), 
+setString(), setFloat()) provided by the CallableStatement interface.
+*/
 public class CallableStatementExample {
 	public static void main(String[] args) {
 		// STEP 2: Declaring the required object references.

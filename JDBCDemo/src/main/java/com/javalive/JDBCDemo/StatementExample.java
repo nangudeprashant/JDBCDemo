@@ -7,6 +7,14 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import com.javalive.dbconnectionutility.*;
 
+/*
+ *Statement
+ *The Statement interface represents the static SQL statement. It helps you to create a general purpose SQL 
+ *statements using Java.
+ *Creating a statement:
+ *You can create an object of this interface using the createStatement() method of the Connection interface.
+*/
+
 public class StatementExample {
 	public static void main(String[] args) {
 		// STEP 2: Declaring the required object references.

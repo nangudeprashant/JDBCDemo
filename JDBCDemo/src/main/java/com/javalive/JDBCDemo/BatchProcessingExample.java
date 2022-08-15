@@ -8,6 +8,26 @@ import java.sql.Statement;
 
 import com.javalive.dbconnectionutility.MySQLDbUtil;
 
+/*
+Batch Processing allows you to group related SQL statements into a batch and submit them with one call to 
+the database.When you send several SQL statements to the database at once, you reduce the amount of 
+communication overhead, thereby improving performance.JDBC drivers are not required to support this feature. 
+You should use the DatabaseMetaData.supportsBatchUpdates() method to determine if the target database 
+supports batch update processing. The method returns true if your JDBC driver supports this feature.
+The addBatch() method of Statement, PreparedStatement, and CallableStatement is used to add individual 
+statements to the batch. The executeBatch() is used to start the execution of all the statements grouped 
+together.The executeBatch() returns an array of integers, and each element of the array represents the update count for the respective update statement.
+Just as you can add statements to a batch for processing, you can remove them with the clearBatch() method.
+This method removes all the statements you added with the addBatch() method. However, you cannot selectively
+choose which statement to remove.
+Batching with Statement Object
+Here is a typical sequence of steps to use Batch Processing with Statement Object −
+Create a Statement object using either createStatement() methods.
+Set auto-commit to false using setAutoCommit().
+Add as many as SQL statements you like into batch using addBatch() method on created statement object.
+Execute all the SQL statements using executeBatch() method on created statement object.
+Finally, commit all the changes using commit() method.
+*/
 public class BatchProcessingExample {
 	public static void main(String[] args) {
 		// STEP 2: Declaring the required object references.
@@ -79,29 +99,28 @@ public class BatchProcessingExample {
 		} // end try
 		System.out.println("Goodbye!");
 	}// end main
-	
-	
-	public static void printRows(Statement stmt) throws SQLException{
-		   //System.out.println("Displaying available rows...");
-		   // Let us select all the records and display them.
-		   String sql = "SELECT id, first, last, age FROM Employees";
-		   ResultSet rs = stmt.executeQuery(sql);
 
-		   while(rs.next()){
-		      //Retrieve by column name
-		      int id  = rs.getInt("id");
-		      int age = rs.getInt("age");
-		      String first = rs.getString("first");
-		      String last = rs.getString("last");
+	public static void printRows(Statement stmt) throws SQLException {
+		// System.out.println("Displaying available rows...");
+		// Let us select all the records and display them.
+		String sql = "SELECT id, first, last, age FROM Employees";
+		ResultSet rs = stmt.executeQuery(sql);
 
-		      //Display values
-		      System.out.print("ID: " + id);
-		      System.out.print(", Age: " + age);
-		      System.out.print(", First: " + first);
-		      System.out.println(", Last: " + last);
-		   }
-		   System.out.println();
-		   rs.close();
-		}//end printRows()
+		while (rs.next()) {
+			// Retrieve by column name
+			int id = rs.getInt("id");
+			int age = rs.getInt("age");
+			String first = rs.getString("first");
+			String last = rs.getString("last");
+
+			// Display values
+			System.out.print("ID: " + id);
+			System.out.print(", Age: " + age);
+			System.out.print(", First: " + first);
+			System.out.println(", Last: " + last);
+		}
+		System.out.println();
+		rs.close();
+	}// end printRows()
 
 }

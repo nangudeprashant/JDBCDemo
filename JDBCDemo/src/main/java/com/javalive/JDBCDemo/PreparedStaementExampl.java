@@ -8,7 +8,13 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import com.javalive.dbconnectionutility.MySQLDbUtil;
-
+/*
+ * The PreparedStatement interface extends the Statement interface it represents a precompiled SQL statement 
+ * which can be executed multiple times. This accepts parameterized SQL quires and you can pass 0 or more 
+ * parameters to this query.
+ * Initially this statement uses place holders “?” instead of parameters, later on you can pass arguments to 
+ * these dynamically using the setXXX() methods of the PreparedStatement interface.
+*/
 public class PreparedStaementExampl {
 	public static void main(String[] args) {
 		// STEP 2: Declaring the required object references.
